@@ -7,7 +7,7 @@
     <tbody>
       <tr>
         @for (romajiPair of this.pickedHiraganaSet(); track romajiPair) {
-          <td (click)="quizElementClicked(romajiPair)" [style.background-color]="getQuizElementColor(romajiPair)">
+          <td (click)="quizElementClicked(romajiPair)" [class]="getQuizElementColor(romajiPair)">
             {{ romajiPair[0] }}
           </td>
         }

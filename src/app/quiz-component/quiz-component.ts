@@ -38,14 +38,13 @@ export class QuizComponent {
     this.correctPairClicked.set(false);
   }
 
-  //TODO convert to class
   public getQuizElementColor(romajiPair: [string, string]): string {
     if (!this.answerClicked()) {
       return '';
     } else if (romajiPair[0] === this.correctHiragana()![0]) {
-      return 'green';
+      return 'correct-answer';
     } else if (romajiPair[0] !== this.correctHiragana()![0]) {
-      return 'red';
+      return 'wrong-answer';
     }
 
     return '';

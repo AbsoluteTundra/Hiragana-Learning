@@ -23,7 +23,7 @@ td {
   --size: 200px;
   width: var(--size);
   height: var(--size);
-  border: 1px solid black;
+  border: 5px solid black;
   border-radius: 10px;
   text-align: center;
   background-color: ivory;
@@ -31,4 +31,14 @@ td {
 
 td:hover {
   background-color: hotpink;
+}
+
+.wrong-answer,
+.wrong-answer:hover {
+  background-color: red;
+}
+
+.correct-answer,
+.correct-answer:hover {
+  background-color: green;
 }
