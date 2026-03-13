@@ -32,7 +32,7 @@ export class QuizComponent {
 
   public setQuizAnswers() {
     this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4));
-    this.correctHiragana.set(this.pickedHiraganaSet()[Math.floor(Math.random() * this.pickedHiraganaSet.length)]);
+    this.correctHiragana.set(this.pickedHiraganaSet()[Math.floor(Math.random() * this.pickedHiraganaSet().length)]);
 
     this.answerClicked.set(false);
     this.correctPairClicked.set(false);
