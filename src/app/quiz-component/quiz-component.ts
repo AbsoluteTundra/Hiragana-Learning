@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
 
 @Component({
@@ -8,46 +8,43 @@ import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
   styleUrl: './quiz-component.css',
 })
 export class QuizComponent {
-  public pickedHiraganaSet?: [string, string][];
-  public correctHiragana?: [string, string];
-  public correctPairClicked: boolean = false;
-  public answerClicked: boolean = false;
+  pickedHiraganaSet = signal<[string, string][]>([]);
+  correctHiragana = signal<[string, string] | undefined>(undefined);
+  answerClicked = signal(false);
+  correctPairClicked = signal(false);
 
   constructor(
     public hiraganaDictionaryService: HiraganaDictionaryService,
-    private changeDetectorRef: ChangeDetectorRef,
   ) {
     this.setQuizAnswers();
   }
 
   public quizElementClicked(clickedPair: [string, string]) {
-    if (this.correctHiragana == clickedPair) {
-      this.correctPairClicked = true;
+    if (this.correctHiragana() == clickedPair) {
+      this.correctPairClicked.set(true);
     }
-    this.answerClicked = true;
+    this.answerClicked.set(true);
 
     setTimeout(() => {
-      this.setQuizAnswers()
-      this.changeDetectorRef.detectChanges();
+      this.setQuizAnswers();
     }, 1000);
   }
 
   public setQuizAnswers() {
-    this.pickedHiraganaSet = this.hiraganaDictionaryService.getMultipleRandomHiragana(4);
-    this.correctHiragana =
-      this.pickedHiraganaSet[Math.floor(Math.random() * this.pickedHiraganaSet.length)];
+    this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4));
+    this.correctHiragana.set(this.pickedHiraganaSet()[Math.floor(Math.random() * this.pickedHiraganaSet.length)]);
 
-    this.answerClicked = false;
-    this.correctPairClicked = false;
+    this.answerClicked.set(false);
+    this.correctPairClicked.set(false);
   }
 
   //TODO convert to class
   public getQuizElementColor(romajiPair: [string, string]): string {
-    if (!this.answerClicked) {
+    if (!this.answerClicked()) {
       return '';
-    } else if (romajiPair[0] === this.correctHiragana![0]) {
+    } else if (romajiPair[0] === this.correctHiragana()![0]) {
       return 'green';
-    } else if (romajiPair[0] !== this.correctHiragana![0]) {
+    } else if (romajiPair[0] !== this.correctHiragana()![0]) {
       return 'red';
     }
 
