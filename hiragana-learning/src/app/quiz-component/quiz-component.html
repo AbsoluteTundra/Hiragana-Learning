@@ -1,0 +1,17 @@
+<div class="quiz-container">
+  <h1>Learn Hiragana Quiz</h1>
+
+  <p>{{ this.correctHiragana![1] }}</p>
+
+  <table>
+    <tbody>
+      <tr>
+        @for (romajiPair of this.pickedHiraganaSet; track romajiPair) {
+          <td (click)="quizElementClicked(romajiPair)" [style.background-color]="getQuizElementColor(romajiPair)">
+            {{ romajiPair[0] }}
+          </td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>

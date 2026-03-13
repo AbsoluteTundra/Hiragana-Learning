@@ -1,0 +1,29 @@
+.quiz-container {
+  background-color: navajowhite;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+p {
+  font-size: 72px;
+}
+
+table {
+  justify-self: center;
+  border-spacing: 30px;
+}
+
+td {
+  font-size: 72px;
+  --size: 200px;
+  width: var(--size);
+  height: var(--size);
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  background-color: wheat;
+}
