@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
+import { ProgressTrackerService } from '../progress-tracker-service';
 
 @Component({
   selector: 'app-quiz-component',
@@ -15,6 +16,7 @@ export class QuizComponent {
 
   constructor(
     public hiraganaDictionaryService: HiraganaDictionaryService,
+    public progressTrackerService: ProgressTrackerService,
   ) {
     this.setQuizAnswers();
   }
@@ -22,7 +24,12 @@ export class QuizComponent {
   public quizElementClicked(clickedPair: [string, string]) {
     if (this.correctHiragana() == clickedPair) {
       this.correctPairClicked.set(true);
+      this.progressTrackerService.correctAnswered++;
+    } else {
+      this.progressTrackerService.wronglyAnswered++;
     }
+
+    this.progressTrackerService.answered++;
     this.answerClicked.set(true);
 
     setTimeout(() => {
