@@ -12,21 +12,21 @@ p {
   font-size: 72px;
 }
 
-table {
+.answers-container {
   justify-self: center;
   border-spacing: 30px;
 }
 
-td {
+.answer {
+  width: 25%;
   transition-duration: 0.2s;
-  font-size: 72px;
-  --size: 200px;
-  width: var(--size);
-  height: var(--size);
+  font-size: clamp(1rem, 8cqw, 5rem);
   border: 5px solid black;
   border-radius: 10px;
   text-align: center;
   background-color: ivory;
+  container-type: inline-size;
+  white-space: nowrap;
 }
 
 td:hover {

@@ -3,15 +3,11 @@
 
   <p>{{ this.correctHiragana()![1] }}</p>
 
-  <table>
-    <tbody>
-      <tr>
-        @for (romajiPair of this.pickedHiraganaSet(); track romajiPair) {
-          <td (click)="quizElementClicked(romajiPair)" [class]="getQuizElementColor(romajiPair)">
-            {{ romajiPair[0] }}
-          </td>
-        }
-      </tr>
-    </tbody>
-  </table>
+  <div class="answers-container">
+    @for (romajiPair of this.pickedHiraganaSet(); track romajiPair) {
+      <td (click)="quizElementClicked(romajiPair)" [class]="getQuizElementColor(romajiPair)">
+        {{ romajiPair[0] }}
+      </td>
+    }
+  </div>
 </div>

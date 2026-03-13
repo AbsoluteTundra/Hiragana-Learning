@@ -40,13 +40,13 @@ export class QuizComponent {
 
   public getQuizElementColor(romajiPair: [string, string]): string {
     if (!this.answerClicked()) {
-      return '';
+      return 'answer';
     } else if (romajiPair[0] === this.correctHiragana()![0]) {
-      return 'correct-answer';
+      return 'answer correct-answer';
     } else if (romajiPair[0] !== this.correctHiragana()![0]) {
-      return 'wrong-answer';
+      return 'answer wrong-answer';
     }
 
-    return '';
+    return 'answer';
   }
 }
