@@ -7,3 +7,7 @@ body {
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
+
+* {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック" , "MS Gothic", "Noto Sans CJK JP", TakaoPGothic, sans-serif;
+}

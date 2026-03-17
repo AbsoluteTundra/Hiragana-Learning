@@ -1,7 +1,10 @@
 <div class="quiz-container">
   <h1>Learn Hiragana Quiz</h1>
 
-  <p>{{ this.correctHiragana()![1] }}</p>
+  <div class="romaji-container">
+    <h2 class="romaji-text-title">pick the matching hiragana character</h2>
+    <h3 class="romaji-text">{{ this.correctHiragana()![1] }}</h3>
+  </div>
 
   <div class="answers-container">
     @for (romajiPair of this.pickedHiraganaSet(); track romajiPair) {
