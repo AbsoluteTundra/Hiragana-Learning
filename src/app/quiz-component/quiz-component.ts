@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
 import { ProgressTrackerService } from '../progress-tracker-service';
+import { HiraganaFamily } from '../hiragana-character-families';
 
 @Component({
   selector: 'app-quiz-component',
@@ -9,8 +10,8 @@ import { ProgressTrackerService } from '../progress-tracker-service';
   styleUrl: './quiz-component.css',
 })
 export class QuizComponent {
-  pickedHiraganaSet = signal<[string, string][]>([]);
-  correctHiragana = signal<[string, string] | undefined>(undefined);
+  pickedHiraganaSet = signal<[string, string, HiraganaFamily][]>([]);
+  correctHiragana = signal<[string, string, HiraganaFamily] | undefined>(undefined);
   answerClicked = signal(false);
   correctPairClicked = signal(false);
 
@@ -21,7 +22,7 @@ export class QuizComponent {
     this.setQuizAnswers();
   }
 
-  public quizElementClicked(clickedPair: [string, string]) {
+  public quizElementClicked(clickedPair: [string, string, HiraganaFamily]) {
     if (this.correctHiragana() == clickedPair) {
       this.correctPairClicked.set(true);
       this.progressTrackerService.correctAnswered++;
@@ -45,7 +46,7 @@ export class QuizComponent {
     this.correctPairClicked.set(false);
   }
 
-  public getQuizElementColor(romajiPair: [string, string]): string {
+  public getQuizElementColor(romajiPair: [string, string, HiraganaFamily]): string {
     if (!this.answerClicked()) {
       return 'answer';
     } else if (romajiPair[0] === this.correctHiragana()![0]) {

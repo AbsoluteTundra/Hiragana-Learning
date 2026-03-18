@@ -1,163 +1,159 @@
 import { Injectable } from '@angular/core';
-import { HiraganaFamily} from './hiragana-character-families';
+import { HiraganaFamily } from './hiragana-character-families';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HiraganaDictionaryService {
-  public hiraganaToRomajiMapping: Map<string, string> = new Map<string, string>([
+  public hiraganaToRomajiMapping: [string, string, HiraganaFamily][] = [
     // Vowels
-    ['あ', 'a'],
-    ['い', 'i'],
-    ['う', 'u'],
-    ['え', 'e'],
-    ['お', 'o'],
+    ['あ', 'a', HiraganaFamily.Vowels],
+    ['い', 'i', HiraganaFamily.Vowels],
+    ['う', 'u', HiraganaFamily.Vowels],
+    ['え', 'e', HiraganaFamily.Vowels],
+    ['お', 'o', HiraganaFamily.Vowels],
 
     // K-row
-    ['か', 'ka'],
-    ['き', 'ki'],
-    ['く', 'ku'],
-    ['け', 'ke'],
-    ['こ', 'ko'],
+    ['か', 'ka', HiraganaFamily.K],
+    ['き', 'ki', HiraganaFamily.K],
+    ['く', 'ku', HiraganaFamily.K],
+    ['け', 'ke', HiraganaFamily.K],
+    ['こ', 'ko', HiraganaFamily.K],
 
     // S-row
-    ['さ', 'sa'],
-    ['し', 'shi'],
-    ['す', 'su'],
-    ['せ', 'se'],
-    ['そ', 'so'],
+    ['さ', 'sa', HiraganaFamily.S],
+    ['し', 'shi', HiraganaFamily.S],
+    ['す', 'su', HiraganaFamily.S],
+    ['せ', 'se', HiraganaFamily.S],
+    ['そ', 'so', HiraganaFamily.S],
 
     // T-row
-    ['た', 'ta'],
-    ['ち', 'chi'],
-    ['つ', 'tsu'],
-    ['て', 'te'],
-    ['と', 'to'],
+    ['た', 'ta', HiraganaFamily.T],
+    ['ち', 'chi', HiraganaFamily.T],
+    ['つ', 'tsu', HiraganaFamily.T],
+    ['て', 'te', HiraganaFamily.T],
+    ['と', 'to', HiraganaFamily.T],
 
     // N-row
-    ['な', 'na'],
-    ['に', 'ni'],
-    ['ぬ', 'nu'],
-    ['ね', 'ne'],
-    ['の', 'no'],
+    ['な', 'na', HiraganaFamily.N],
+    ['に', 'ni', HiraganaFamily.N],
+    ['ぬ', 'nu', HiraganaFamily.N],
+    ['ね', 'ne', HiraganaFamily.N],
+    ['の', 'no', HiraganaFamily.N],
 
     // H-row
-    ['は', 'ha'],
-    ['ひ', 'hi'],
-    ['ふ', 'fu'],
-    ['へ', 'he'],
-    ['ほ', 'ho'],
+    ['は', 'ha', HiraganaFamily.H],
+    ['ひ', 'hi', HiraganaFamily.H],
+    ['ふ', 'fu', HiraganaFamily.H],
+    ['へ', 'he', HiraganaFamily.H],
+    ['ほ', 'ho', HiraganaFamily.H],
 
     // M-row
-    ['ま', 'ma'],
-    ['み', 'mi'],
-    ['む', 'mu'],
-    ['め', 'me'],
-    ['も', 'mo'],
+    ['ま', 'ma', HiraganaFamily.M],
+    ['み', 'mi', HiraganaFamily.M],
+    ['む', 'mu', HiraganaFamily.M],
+    ['め', 'me', HiraganaFamily.M],
+    ['も', 'mo', HiraganaFamily.M],
 
     // Y-row
-    ['や', 'ya'],
-    ['ゆ', 'yu'],
-    ['よ', 'yo'],
+    ['や', 'ya', HiraganaFamily.Y],
+    ['ゆ', 'yu', HiraganaFamily.Y],
+    ['よ', 'yo', HiraganaFamily.Y],
 
     // R-row
-    ['ら', 'ra'],
-    ['り', 'ri'],
-    ['る', 'ru'],
-    ['れ', 're'],
-    ['ろ', 'ro'],
+    ['ら', 'ra', HiraganaFamily.R],
+    ['り', 'ri', HiraganaFamily.R],
+    ['る', 'ru', HiraganaFamily.R],
+    ['れ', 're', HiraganaFamily.R],
+    ['ろ', 'ro', HiraganaFamily.R],
 
     // W-row
-    ['わ', 'wa'],
-    ['を', 'wo'],
+    ['わ', 'wa', HiraganaFamily.W],
+    ['を', 'wo', HiraganaFamily.W],
 
     // N
-    ['ん', 'n'],
+    ['ん', 'n', HiraganaFamily.N_standalone],
 
     // Dakuten (voiced)
-    ['が', 'ga'],
-    ['ぎ', 'gi'],
-    ['ぐ', 'gu'],
-    ['げ', 'ge'],
-    ['ご', 'go'],
-    ['ざ', 'za'],
-    ['じ', 'ji'],
-    ['ず', 'zu'],
-    ['ぜ', 'ze'],
-    ['ぞ', 'zo'],
-    ['だ', 'da'],
-    ['ぢ', 'ji'],
-    ['づ', 'zu'],
-    ['で', 'de'],
-    ['ど', 'do'],
-    ['ば', 'ba'],
-    ['び', 'bi'],
-    ['ぶ', 'bu'],
-    ['べ', 'be'],
-    ['ぼ', 'bo'],
+    ['が', 'ga', HiraganaFamily.Dakuten],
+    ['ぎ', 'gi', HiraganaFamily.Dakuten],
+    ['ぐ', 'gu', HiraganaFamily.Dakuten],
+    ['げ', 'ge', HiraganaFamily.Dakuten],
+    ['ご', 'go', HiraganaFamily.Dakuten],
+    ['ざ', 'za', HiraganaFamily.Dakuten],
+    ['じ', 'ji', HiraganaFamily.Dakuten],
+    ['ず', 'zu', HiraganaFamily.Dakuten],
+    ['ぜ', 'ze', HiraganaFamily.Dakuten],
+    ['ぞ', 'zo', HiraganaFamily.Dakuten],
+    ['だ', 'da', HiraganaFamily.Dakuten],
+    ['ぢ', 'ji', HiraganaFamily.Dakuten],
+    ['づ', 'zu', HiraganaFamily.Dakuten],
+    ['で', 'de', HiraganaFamily.Dakuten],
+    ['ど', 'do', HiraganaFamily.Dakuten],
+    ['ば', 'ba', HiraganaFamily.Dakuten],
+    ['び', 'bi', HiraganaFamily.Dakuten],
+    ['ぶ', 'bu', HiraganaFamily.Dakuten],
+    ['べ', 'be', HiraganaFamily.Dakuten],
+    ['ぼ', 'bo', HiraganaFamily.Dakuten],
 
     // Handakuten (p-sounds)
-    ['ぱ', 'pa'],
-    ['ぴ', 'pi'],
-    ['ぷ', 'pu'],
-    ['ぺ', 'pe'],
-    ['ぽ', 'po'],
+    ['ぱ', 'pa', HiraganaFamily.Handakuten],
+    ['ぴ', 'pi', HiraganaFamily.Handakuten],
+    ['ぷ', 'pu', HiraganaFamily.Handakuten],
+    ['ぺ', 'pe', HiraganaFamily.Handakuten],
+    ['ぽ', 'po', HiraganaFamily.Handakuten],
 
     // Combination characters (youon)
-    ['きゃ', 'kya'],
-    ['きゅ', 'kyu'],
-    ['きょ', 'kyo'],
-    ['しゃ', 'sha'],
-    ['しゅ', 'shu'],
-    ['しょ', 'sho'],
-    ['ちゃ', 'cha'],
-    ['ちゅ', 'chu'],
-    ['ちょ', 'cho'],
-    ['にゃ', 'nya'],
-    ['にゅ', 'nyu'],
-    ['にょ', 'nyo'],
-    ['ひゃ', 'hya'],
-    ['ひゅ', 'hyu'],
-    ['ひょ', 'hyo'],
-    ['みゃ', 'mya'],
-    ['みゅ', 'myu'],
-    ['みょ', 'myo'],
-    ['りゃ', 'rya'],
-    ['りゅ', 'ryu'],
-    ['りょ', 'ryo'],
-    ['ぎゃ', 'gya'],
-    ['ぎゅ', 'gyu'],
-    ['ぎょ', 'gyo'],
-    ['じゃ', 'ja'],
-    ['じゅ', 'ju'],
-    ['じょ', 'jo'],
-    ['びゃ', 'bya'],
-    ['びゅ', 'byu'],
-    ['びょ', 'byo'],
-    ['ぴゃ', 'pya'],
-    ['ぴゅ', 'pyu'],
-    ['ぴょ', 'pyo'],
-  ]);
+    ['きゃ', 'kya', HiraganaFamily.Youon],
+    ['きゅ', 'kyu', HiraganaFamily.Youon],
+    ['きょ', 'kyo', HiraganaFamily.Youon],
+    ['しゃ', 'sha', HiraganaFamily.Youon],
+    ['しゅ', 'shu', HiraganaFamily.Youon],
+    ['しょ', 'sho', HiraganaFamily.Youon],
+    ['ちゃ', 'cha', HiraganaFamily.Youon],
+    ['ちゅ', 'chu', HiraganaFamily.Youon],
+    ['ちょ', 'cho', HiraganaFamily.Youon],
+    ['にゃ', 'nya', HiraganaFamily.Youon],
+    ['にゅ', 'nyu', HiraganaFamily.Youon],
+    ['にょ', 'nyo', HiraganaFamily.Youon],
+    ['ひゃ', 'hya', HiraganaFamily.Youon],
+    ['ひゅ', 'hyu', HiraganaFamily.Youon],
+    ['ひょ', 'hyo', HiraganaFamily.Youon],
+    ['みゃ', 'mya', HiraganaFamily.Youon],
+    ['みゅ', 'myu', HiraganaFamily.Youon],
+    ['みょ', 'myo', HiraganaFamily.Youon],
+    ['りゃ', 'rya', HiraganaFamily.Youon],
+    ['りゅ', 'ryu', HiraganaFamily.Youon],
+    ['りょ', 'ryo', HiraganaFamily.Youon],
+    ['ぎゃ', 'gya', HiraganaFamily.Youon],
+    ['ぎゅ', 'gyu', HiraganaFamily.Youon],
+    ['ぎょ', 'gyo', HiraganaFamily.Youon],
+    ['じゃ', 'ja', HiraganaFamily.Youon],
+    ['じゅ', 'ju', HiraganaFamily.Youon],
+    ['じょ', 'jo', HiraganaFamily.Youon],
+    ['びゃ', 'bya', HiraganaFamily.Youon],
+    ['びゅ', 'byu', HiraganaFamily.Youon],
+    ['びょ', 'byo', HiraganaFamily.Youon],
+    ['ぴゃ', 'pya', HiraganaFamily.Youon],
+    ['ぴゅ', 'pyu', HiraganaFamily.Youon],
+    ['ぴょ', 'pyo', HiraganaFamily.Youon],
+  ];
 
   public getRandomHiraganaEntry(): string {
-    return Array.from(this.hiraganaToRomajiMapping.keys())[
-      Math.floor(Math.random() * this.hiraganaToRomajiMapping.size)
-    ];
+    return this.hiraganaToRomajiMapping[Math.floor(Math.random() * this.hiraganaToRomajiMapping.length)][0];
   }
 
   public getRandomRomajiEntry(): string {
-    return Array.from(this.hiraganaToRomajiMapping.values())[
-      Math.floor(Math.random() * this.hiraganaToRomajiMapping.size)
-    ];
+    return this.hiraganaToRomajiMapping[Math.floor(Math.random() * this.hiraganaToRomajiMapping.length)][1];
   }
 
-  public getMultipleRandomHiragana(amount:number): [string,string][]
-  {
-    let hiraganaRomajiPairs:Set<[string,string]> = new Set();
+  public getMultipleRandomHiragana(amount: number): [string, string, HiraganaFamily][] {
+    let hiraganaRomajiPairs: Set<[string, string, HiraganaFamily]> = new Set();
     let hiraganaToRomajiMappingArray = Array.from(this.hiraganaToRomajiMapping);
 
     while (hiraganaRomajiPairs.size !== amount && hiraganaRomajiPairs.size !== hiraganaToRomajiMappingArray.length) {
-      hiraganaRomajiPairs.add(hiraganaToRomajiMappingArray[Math.floor(Math.random() * hiraganaToRomajiMappingArray.length)],);
+      let selectedAnswer = hiraganaToRomajiMappingArray[Math.floor(Math.random() * hiraganaToRomajiMappingArray.length)];
+      hiraganaRomajiPairs.add(selectedAnswer);
     }
 
     return Array.from(hiraganaRomajiPairs);
