@@ -16,7 +16,7 @@
 
   <h2>{{ progressTrackerService.correctAnswered }} / {{ progressTrackerService.answered }} Correctly</h2>
 
-  <div style="display: flex; flex-direction: column; width: 80%; align-items: flex-start">
+  <div style="display: flex; flex-direction: row; width: 80%; align-items: flex-start; flex-wrap: wrap">
     @for (hiraganaFamily of Object.values(HiraganaFamily); track hiraganaFamily; let index = $index) {
       <label>
         <input #checkbox (change)="toggle(checkbox.checked, hiraganaFamily)" [checked]="isChecked(hiraganaFamily)"
