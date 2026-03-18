@@ -48,7 +48,7 @@ td:hover {
   border: 2px solid black;
   padding: 10px;
   container-type: inline-size;
-  width: clamp(200px, 80%, 600px);
+  width: clamp(100px, 80%, 600px);
 }
 
 .family-container {
@@ -60,7 +60,9 @@ td:hover {
 }
 
 .romaji-text {
-  font-size: clamp(0.5rem, 20cqw, 6rem);
+  font-size: clamp(0.5rem, 100cqw, 204px);
+  margin: 0;
+  text-decoration: underline;
 }
 
 .romaji-text-title {
