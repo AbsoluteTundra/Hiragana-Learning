@@ -51,6 +51,14 @@ td:hover {
   width: clamp(200px, 80%, 600px);
 }
 
+.family-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .romaji-text {
   font-size: clamp(0.5rem, 20cqw, 6rem);
 }
