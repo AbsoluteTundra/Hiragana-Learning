@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HiraganaFamily} from './hiragana-character-families';
 
 @Injectable({
   providedIn: 'root',

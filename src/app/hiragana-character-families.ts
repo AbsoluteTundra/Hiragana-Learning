@@ -1,0 +1,16 @@
+﻿export enum HiraganaFamily {
+  Vowels = 'VOWELS',
+  K = 'K',
+  S = 'S',
+  T = 'T',
+  N = 'N',
+  H = 'H',
+  M = 'M',
+  Y = 'Y',
+  R = 'R',
+  W = 'W',
+  N_standalone = 'N_STANDALONE',
+  Dakuten = 'DAKUTEN',
+  Handakuten = 'HANDAKUTEN',
+  Youon = 'YOUON',
+}
