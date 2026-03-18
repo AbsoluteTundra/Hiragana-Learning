@@ -15,16 +15,16 @@ describe('HiraganaDictionaryService', () => {
   });
 
   it('should not contain duplicate answers', () => {
-    let amountToRetrieve:number = service.hiraganaToRomajiMapping.size;
+    let amountToRetrieve:number = service.hiraganaToRomajiMapping.length;
     let selectedAnswer = service.getMultipleRandomHiragana(amountToRetrieve);
 
     expect(selectedAnswer.length).toBe(amountToRetrieve);
   });
 
   it('should not contain more answers then possible', () => {
-    let amountToRetrieve: number = service.hiraganaToRomajiMapping.size + 1;
+    let amountToRetrieve: number = service.hiraganaToRomajiMapping.length + 1;
     let selectedAnswer = service.getMultipleRandomHiragana(amountToRetrieve);
 
-    expect(selectedAnswer.length).toBe(service.hiraganaToRomajiMapping.size);
+    expect(selectedAnswer.length).toBe(service.hiraganaToRomajiMapping.length);
   });
 });

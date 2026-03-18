@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
 import { ProgressTrackerService } from '../progress-tracker-service';
 import { HiraganaFamily } from '../hiragana-character-families';
@@ -39,7 +39,7 @@ export class QuizComponent {
   }
 
   public setQuizAnswers() {
-    this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4));
+    this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4, [HiraganaFamily.All]));
     this.correctHiragana.set(this.pickedHiraganaSet()[Math.floor(Math.random() * this.pickedHiraganaSet().length)]);
 
     this.answerClicked.set(false);
