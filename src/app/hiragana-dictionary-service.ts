@@ -139,6 +139,8 @@ export class HiraganaDictionaryService {
     ['ぴょ', 'pyo', HiraganaFamily.Youon],
   ];
 
+  public activeHiraganaFamily:HiraganaFamily[] = [HiraganaFamily.Vowels];
+
   public getRandomHiraganaEntry(): string {
     return this.hiraganaToRomajiMapping[Math.floor(Math.random() * this.hiraganaToRomajiMapping.length)][0];
   }
@@ -147,12 +149,12 @@ export class HiraganaDictionaryService {
     return this.hiraganaToRomajiMapping[Math.floor(Math.random() * this.hiraganaToRomajiMapping.length)][1];
   }
 
-  public getMultipleRandomHiragana(amount: number, hiraganaFamilies:HiraganaFamily[] = [HiraganaFamily.All]): [string, string, HiraganaFamily][] {
+  public getMultipleRandomHiragana(amount: number): [string, string, HiraganaFamily][] {
     let hiraganaRomajiPairs: Set<[string, string, HiraganaFamily]> = new Set();
     let hiraganaToRomajiMappingArray = Array.from(this.hiraganaToRomajiMapping);
 
-    if(hiraganaFamilies.length > 0 && !hiraganaFamilies.includes(HiraganaFamily.All)){
-      hiraganaToRomajiMappingArray = hiraganaToRomajiMappingArray.filter(hiragana => hiraganaFamilies.includes(hiragana[2]));
+    if(this.activeHiraganaFamily.length > 0){
+      hiraganaToRomajiMappingArray = hiraganaToRomajiMappingArray.filter(hiragana => this.activeHiraganaFamily.includes(hiragana[2]));
     }
 
     while (hiraganaRomajiPairs.size !== amount && hiraganaRomajiPairs.size !== hiraganaToRomajiMappingArray.length) {

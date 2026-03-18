@@ -39,7 +39,7 @@ export class QuizComponent {
   }
 
   public setQuizAnswers() {
-    this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4, [HiraganaFamily.All]));
+    this.pickedHiraganaSet.set(this.hiraganaDictionaryService.getMultipleRandomHiragana(4));
     this.correctHiragana.set(this.pickedHiraganaSet()[Math.floor(Math.random() * this.pickedHiraganaSet().length)]);
 
     this.answerClicked.set(false);
@@ -57,4 +57,22 @@ export class QuizComponent {
 
     return 'answer';
   }
+
+  public isChecked(hiraganaFamily: HiraganaFamily) {
+    return this.hiraganaDictionaryService.activeHiraganaFamily.includes(hiraganaFamily);
+  }
+
+  public toggle(state:boolean, hiraganaFamily: HiraganaFamily) {
+    if(!state && this.hiraganaDictionaryService.activeHiraganaFamily.includes(hiraganaFamily))
+    {
+      this.hiraganaDictionaryService.activeHiraganaFamily = this.hiraganaDictionaryService.activeHiraganaFamily.filter((hf: HiraganaFamily) => hf !== hiraganaFamily);
+    }
+    else if(state)
+    {
+      this.hiraganaDictionaryService.activeHiraganaFamily.push(hiraganaFamily);
+    }
+  }
+
+  protected readonly Object = Object;
+  protected readonly HiraganaFamily = HiraganaFamily;
 }

@@ -1,5 +1,4 @@
 ﻿export enum HiraganaFamily {
-  All= 'ALL',
   Vowels = 'VOWELS',
   K = 'K',
   S = 'S',
