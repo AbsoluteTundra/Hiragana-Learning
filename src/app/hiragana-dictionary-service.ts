@@ -152,12 +152,13 @@ export class HiraganaDictionaryService {
 
   public getMultipleRandomHiragana(amount:number): [string,string][]
   {
-    let hiraganaRomajiPairs:[string,string][] = [];
+    let hiraganaRomajiPairs:Set<[string,string]> = new Set();
     let hiraganaToRomajiMappingArray = Array.from(this.hiraganaToRomajiMapping);
 
-    for (let i = 0; i <amount; i++) {
-      hiraganaRomajiPairs.push(hiraganaToRomajiMappingArray[Math.floor(Math.random() * hiraganaToRomajiMappingArray.length)],);
+    while (hiraganaRomajiPairs.size !== amount && hiraganaRomajiPairs.size !== hiraganaToRomajiMappingArray.length) {
+      hiraganaRomajiPairs.add(hiraganaToRomajiMappingArray[Math.floor(Math.random() * hiraganaToRomajiMappingArray.length)],);
     }
-    return hiraganaRomajiPairs;
+
+    return Array.from(hiraganaRomajiPairs);
   }
 }
