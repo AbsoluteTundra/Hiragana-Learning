@@ -7,11 +7,26 @@
   </div>
 
   <div class="answers-container">
-    @for (romajiPair of this.pickedHiraganaSet(); track romajiPair) {
-      <td (click)="quizElementClicked(romajiPair)" [class]="getQuizElementColor(romajiPair)">
-        {{ romajiPair[0] }}
-      </td>
-    }
+    <div style="display: flex; flex-direction: row">
+      <div (click)="quizElementClicked(this.pickedHiraganaSet()[0])"
+           [class]="getQuizElementColor(this.pickedHiraganaSet()[0])">
+        <h4>{{ this.pickedHiraganaSet()[0][0] }}</h4>
+      </div>
+      <div (click)="quizElementClicked(this.pickedHiraganaSet()[1])"
+           [class]="getQuizElementColor(this.pickedHiraganaSet()[1])">
+        <h4>{{ this.pickedHiraganaSet()[1][0] }}</h4>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: row">
+      <div (click)="quizElementClicked(this.pickedHiraganaSet()[2])"
+           [class]="getQuizElementColor(this.pickedHiraganaSet()[2])">
+        <h4>{{ this.pickedHiraganaSet()[2][0] }}</h4>
+      </div>
+      <div (click)="quizElementClicked(this.pickedHiraganaSet()[3])"
+           [class]="getQuizElementColor(this.pickedHiraganaSet()[3])">
+        <h4>{{ this.pickedHiraganaSet()[3][0] }}</h4>
+      </div>
+    </div>
   </div>
 
   <h2>{{ progressTrackerService.correctAnswered }} / {{ progressTrackerService.answered }} Correctly</h2>

@@ -11,12 +11,12 @@
 }
 
 .answers-container {
-  justify-self: center;
-  border-spacing: 30px;
+  width: clamp(100px, 100%, 600px);
 }
 
 .answer {
-  width: 25%;
+  width: 100%;
+  margin: 2%;
   transition-duration: 0.2s;
   font-size: clamp(1rem, 8cqw, 5rem);
   border: 2px solid black;
@@ -27,7 +27,11 @@
   white-space: nowrap;
 }
 
-td:hover {
+.answer>h4 {
+  margin: 5%;
+}
+
+answer:hover {
   background-color: burlywood;
 }
 
