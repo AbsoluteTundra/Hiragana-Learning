@@ -1,4 +1,5 @@
 <div class="quiz-container">
+  <app-settings-component/>
   <h1>Learn Hiragana Quiz</h1>
 
   <div class="romaji-container">
@@ -30,14 +31,4 @@
   </div>
 
   <h2>{{ progressTrackerService.correctAnswered }} / {{ progressTrackerService.answered }} Correctly</h2>
-
-  <div class="family-container">
-    @for (hiraganaFamily of Object.values(HiraganaFamily); track hiraganaFamily; let index = $index) {
-      <label>
-        <input #checkbox (change)="toggle(checkbox.checked, hiraganaFamily)" [checked]="isChecked(hiraganaFamily)"
-               type="checkbox">
-        {{ hiraganaFamily.toLowerCase() }}
-      </label>
-    }
-  </div>
 </div>

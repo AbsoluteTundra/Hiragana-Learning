@@ -2,10 +2,13 @@ import { Component, signal } from '@angular/core';
 import { HiraganaDictionaryService } from '../hiragana-dictionary-service';
 import { ProgressTrackerService } from '../progress-tracker-service';
 import { HiraganaFamily } from '../hiragana-character-families';
+import { SettingsComponent } from '../settings-component/settings-component';
 
 @Component({
   selector: 'app-quiz-component',
-  imports: [],
+  imports: [
+    SettingsComponent
+  ],
   templateUrl: './quiz-component.html',
   styleUrl: './quiz-component.css',
 })
@@ -57,22 +60,4 @@ export class QuizComponent {
 
     return 'answer';
   }
-
-  public isChecked(hiraganaFamily: HiraganaFamily) {
-    return this.hiraganaDictionaryService.activeHiraganaFamily.includes(hiraganaFamily);
-  }
-
-  public toggle(state:boolean, hiraganaFamily: HiraganaFamily) {
-    if(!state && this.hiraganaDictionaryService.activeHiraganaFamily.includes(hiraganaFamily))
-    {
-      this.hiraganaDictionaryService.activeHiraganaFamily = this.hiraganaDictionaryService.activeHiraganaFamily.filter((hf: HiraganaFamily) => hf !== hiraganaFamily);
-    }
-    else if(state)
-    {
-      this.hiraganaDictionaryService.activeHiraganaFamily.push(hiraganaFamily);
-    }
-  }
-
-  protected readonly Object = Object;
-  protected readonly HiraganaFamily = HiraganaFamily;
 }
