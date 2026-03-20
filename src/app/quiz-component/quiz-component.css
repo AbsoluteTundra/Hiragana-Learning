@@ -31,8 +31,9 @@
   margin: 5%;
 }
 
-answer:hover {
-  background-color: burlywood;
+.answer:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
 }
 
 .wrong-answer,
